@@ -1,5 +1,4 @@
 import ReturnToMainButton from "@/ui/returnToMainButton";
-import { ButtonIcon, ResumeIcon } from "@radix-ui/react-icons";
 import { Flex, Kbd, Text } from "@radix-ui/themes";
 import { kv } from "@vercel/kv";
 import { redirect } from "next/navigation";

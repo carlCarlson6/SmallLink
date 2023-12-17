@@ -1,7 +1,7 @@
 "use client"
 
 import { ThickArrowLeftIcon } from "@radix-ui/react-icons";
-import { Button, Flex, IconButton, Text } from "@radix-ui/themes";
+import { Button, Text } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 
 export default function ReturnToMainButton() {
