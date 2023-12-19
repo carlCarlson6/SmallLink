@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export default function ReturnToMainButton() {
   const router = useRouter();
   return (
-    <Button onClick={() => router.push('/')}>
+    <Button onClick={() => router.push('/')} style={{cursor: 'pointer'}} >
       <ThickArrowLeftIcon /> 
       <Text>back to main</Text>
     </Button>
