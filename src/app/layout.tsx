@@ -36,7 +36,7 @@ export default function RootLayout({
 
 function DevelopedBy() {
   return (
-    <Flex pt={'8'} direction={'column'} align={'center'}>
+    <Flex pt={'8'} pb={'6'} direction={'column'} align={'center'}>
       <Text>Developed by Carlos A.D.</Text>
       <Flex pt={'5'} align={'center'} justify={'center'} gap={'3'}>
         <a href="https://github.com/carlCarlson6" target="_blank">
