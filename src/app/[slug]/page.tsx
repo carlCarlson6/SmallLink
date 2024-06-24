@@ -1,5 +1,4 @@
-import { queries } from "@/server/actions";
-import { getShortLinkAction } from "@/server/getShortLink";
+import { queries } from "@/server/infrastructure/actions";
 import ReturnToMainButton from "@/ui/returnToMainButton";
 import { Flex, Kbd, Text } from "@radix-ui/themes";
 import { redirect } from "next/navigation";

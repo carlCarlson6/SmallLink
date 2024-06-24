@@ -1,6 +1,5 @@
 "use client";
 
-import { createSmallLink } from '@/server/createSmallLinkAction';
 import {Blockquote, Button, Flex, TextFieldInput, Text, Box} from "@radix-ui/themes";
 import {useEffect, useState} from "react";
 import { useLocalStorage } from "usehooks-ts";
@@ -8,6 +7,7 @@ import { urlSchema } from '@/common/schema';
 import MyLinksTable from './myLinksTable';
 import CopyToClipboard from './copyToClipboard';
 import { useAppUrl } from './useAppUrl';
+import { commands } from "@/server/infrastructure/actions";
 
 export default function MakeItSmallForm() {
 	const {
@@ -86,18 +86,19 @@ const useMakeItSmall = () => {
 		myLinks,
 		onClick: async () => {
 			setIsRunning(true);
-			const response = await createSmallLink(inputText);
-			setInputText("");
-			setIsRunning(false);
 
-			if (response === "INVALID_URL") {
-				// TODO - HANDLE ERROR
+			try {
+				const response = await commands.createSmallLink({url: inputText});	
+				setLastAddedSlug(response.slug);
+				setMyLinks([response, ...myLinks]);
+      			setMyStoredLinks([response, ...myStoredLinks]);
+			}
+			catch (e) {
 				return;
 			}
-			
-			setLastAddedSlug(response.slug);
-			setMyLinks([response, ...myLinks]);
-      setMyStoredLinks([response, ...myStoredLinks]);
+
+			setInputText("");
+			setIsRunning(false);
 		}
 	}
 }

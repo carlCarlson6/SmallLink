@@ -8,6 +8,8 @@ export const shortLinkSchema = z.object({
     owner: z.string().min(1),
 });
 
+export const ANONYMOUS_ONWER = "@ANONYMOUS";
+
 export const readShortLinkFromCache = (redis: Redis) => async (slug: string) => {
     const maybeShortLinkFromCacheStrContent = await redis.get(slug);
     if (maybeShortLinkFromCacheStrContent) return null;
