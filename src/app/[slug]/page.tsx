@@ -1,14 +1,15 @@
+import { queries } from "@/server/actions";
+import { getShortLinkAction } from "@/server/getShortLink";
 import ReturnToMainButton from "@/ui/returnToMainButton";
 import { Flex, Kbd, Text } from "@radix-ui/themes";
-import { kv } from "@vercel/kv";
 import { redirect } from "next/navigation";
 
 export default async function SlugPage({params: {slug}}: {
   params: {slug: string}
 }) {
-  const maybeUrl = await kv.get<string>(slug);
-  if(maybeUrl) {
-    redirect(maybeUrl);
+  const maybeShortLink = await queries.getShorLink({slug});
+  if (maybeShortLink) {
+    redirect(maybeShortLink);
   }
 
   return (<>
